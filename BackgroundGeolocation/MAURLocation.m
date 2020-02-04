@@ -70,7 +70,7 @@ MAURLocation* _location;
 
 @implementation MAURLocation
 
-@synthesize locationId, time, accuracy, altitudeAccuracy, speed, heading, altitude, latitude, longitude, provider, locationProvider, radius, isValid, recordedAt;
+@synthesize locationId, time, accuracy, altitudeAccuracy, speed, heading, altitude, latitude, longitude, battery, provider, locationProvider, radius, isValid, recordedAt;
 
 + (instancetype) fromCLLocation:(CLLocation*)location;
 {
@@ -91,24 +91,6 @@ MAURLocation* _location;
 + (NSTimeInterval) locationAge:(CLLocation*)location
 {
     return -[location.timestamp timeIntervalSinceNow];
-}
-
-+ (NSDictionary*) toDictionary:(CLLocation*)location;
-{
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:10];
-
-    NSNumber* timestamp = [NSNumber numberWithDouble:([location.timestamp timeIntervalSince1970] * 1000)];
-    [dict setObject:timestamp forKey:@"time"];
-    [dict setObject:[NSNumber numberWithDouble:location.horizontalAccuracy] forKey:@"accuracy"];
-    [dict setObject:[NSNumber numberWithDouble:location.verticalAccuracy] forKey:@"altitudeAccuracy"];
-    [dict setObject:[NSNumber numberWithDouble:location.speed] forKey:@"speed"];
-    [dict setObject:[NSNumber numberWithDouble:location.course] forKey:@"heading"];
-    [dict setObject:[NSNumber numberWithDouble:location.course] forKey:@"bearing"];
-    [dict setObject:[NSNumber numberWithDouble:location.altitude] forKey:@"altitude"];
-    [dict setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:@"latitude"];
-    [dict setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:@"longitude"];
-
-    return dict;
 }
 
 - (instancetype) init
@@ -147,7 +129,7 @@ MAURLocation* _location;
 
 - (NSMutableDictionary*) toDictionary
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:13];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:14];
 
     if (time != nil) [dict setObject:[NSNumber numberWithDouble:([time timeIntervalSince1970] * 1000)] forKey:@"time"];
     if (accuracy != nil) [dict setObject:accuracy forKey:@"accuracy"];
@@ -158,6 +140,7 @@ MAURLocation* _location;
     if (altitude != nil) [dict setObject:altitude forKey:@"altitude"];
     if (latitude != nil) [dict setObject:latitude forKey:@"latitude"];
     if (longitude != nil) [dict setObject:longitude forKey:@"longitude"];
+    if (battery != nil) [dict setObject:battery forKey:@"battery"];
     if (provider != nil) [dict setObject:provider forKey:@"provider"];
     if (locationProvider != nil) [dict setObject:locationProvider forKey:@"locationProvider"];
     if (radius != nil) [dict setObject:radius forKey:@"radius"];
@@ -201,6 +184,9 @@ MAURLocation* _location;
     }
     if ([key isEqualToString:@"@longitude"]) {
         return longitude;
+    }
+    if ([key isEqualToString:@"@battery"]) {
+        return battery;
     }
     if ([key isEqualToString:@"@provider"]) {
         return provider;
@@ -322,7 +308,7 @@ MAURLocation* _location;
 
 - (NSString *) description
 {
-    return [NSString stringWithFormat:@"Location: id=%@ time=%@ lat=%@ lon=%@ accu=%@ aaccu=%@ speed=%@ bear=%@ alt=%@", locationId, time, latitude, longitude, accuracy, altitudeAccuracy, speed, heading, altitude];
+    return [NSString stringWithFormat:@"Location: id=%@ time=%@ lat=%@ lon=%@ batt=%@ accu=%@ aaccu=%@ speed=%@ bear=%@ alt=%@", locationId, time, latitude, longitude, battery, accuracy, altitudeAccuracy, speed, heading, altitude];
 }
 
 -(id) copyWithZone: (NSZone *) zone
@@ -337,6 +323,7 @@ MAURLocation* _location;
         copy.altitude = altitude;
         copy.latitude = latitude;
         copy.longitude = longitude;
+        copy.battery = battery;
         copy.provider = provider;
         copy.locationProvider = locationProvider;
         copy.radius = radius;

@@ -406,6 +406,7 @@
              @"altitude": @"@altitude",
              @"latitude": @"@latitude",
              @"longitude": @"@longitude",
+             @"longitude": @"@battery",
              @"provider": @"provider",
              @"locationProvider": @"@locationProvider",
              @"radius": @"@radius",

@@ -28,6 +28,7 @@
 #import "MAURUncaughtExceptionLogger.h"
 #import "MAURPostLocationTask.h"
 #import "INTULocationManager.h"
+#import "MAURBatteryManager.h"
 
 // error messages
 #define CONFIGURE_ERROR_MSG             "Configuration error."
@@ -407,7 +408,10 @@ FMDBLogger *sqliteLogger;
     dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 
     if (location != nil) {
-        return [MAURLocation fromCLLocation:location];
+        MAURLocation *bgloc = [MAURLocation fromCLLocation:location];
+        [bgloc setBattery: [MAURBatteryManager getBatteryPercentage]];
+
+        return bgloc;
     }
 
     if (outError != nil) {

@@ -10,6 +10,7 @@
 #import "MAURRawLocationProvider.h"
 #import "MAURLocationManager.h"
 #import "MAURLogging.h"
+#import "MAURBatteryManager.h"
 
 static NSString * const TAG = @"RawLocationProvider";
 static NSString * const Domain = @"com.marianhello";
@@ -96,6 +97,8 @@ static NSString * const Domain = @"com.marianhello";
 {
     for (CLLocation *location in locations) {
         MAURLocation *bgloc = [MAURLocation fromCLLocation:location];
+        [bgloc setBattery: [MAURBatteryManager getBatteryPercentage]];
+
         [self.delegate onLocationChanged:bgloc];
     }
 }

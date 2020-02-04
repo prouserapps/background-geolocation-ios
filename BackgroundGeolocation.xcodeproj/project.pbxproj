@@ -63,6 +63,7 @@
 		41BCFA5A1FE19ED300D4000E /* SOMotionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA511FE19ED300D4000E /* SOMotionDetector.m */; };
 		41BCFA5B1FE19ED300D4000E /* SOLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA521FE19ED300D4000E /* SOLocationManager.m */; };
 		41BCFA5C1FE19ED300D4000E /* SOStepDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA591FE19ED300D4000E /* SOStepDetector.m */; };
+		45E6B6BF95C5A792FD1A354C /* MAURBatteryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E6BCDFAD1FBA890D567F7F /* MAURBatteryManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,8 @@
 		41E82E811D5E351900F65575 /* MAURSQLiteLocationDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteLocationDAO.m; sourceTree = "<group>"; };
 		41E82E821D5E351900F65575 /* MAURSQLiteOpenHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURSQLiteOpenHelper.h; sourceTree = "<group>"; };
 		41E82E831D5E351900F65575 /* MAURSQLiteOpenHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteOpenHelper.m; sourceTree = "<group>"; };
+		45E6B23928A12AA806E64F70 /* MAURBatteryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURBatteryManager.h; sourceTree = "<group>"; };
+		45E6BCDFAD1FBA890D567F7F /* MAURBatteryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURBatteryManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +312,8 @@
 				4152F1B62094F8EA00BFE338 /* MAURPostLocationTask.m */,
 				41E82E761D5E351900F65575 /* MAURBackgroundGeolocationFacade.h */,
 				41E82E771D5E351900F65575 /* MAURBackgroundGeolocationFacade.m */,
+				45E6B23928A12AA806E64F70 /* MAURBatteryManager.h */,
+				45E6BCDFAD1FBA890D567F7F /* MAURBatteryManager.m */,
 			);
 			path = BackgroundGeolocation;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 				41B1805B1FD2E05C00951D67 /* MAURBackgroundGeolocationFacade.m in Sources */,
 				41BCFA5A1FE19ED300D4000E /* SOMotionDetector.m in Sources */,
 				41BCFA5B1FE19ED300D4000E /* SOLocationManager.m in Sources */,
+				45E6B6BF95C5A792FD1A354C /* MAURBatteryManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

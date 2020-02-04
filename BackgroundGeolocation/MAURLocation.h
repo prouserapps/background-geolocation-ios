@@ -32,6 +32,7 @@ typedef NS_ENUM(NSInteger, MAURLocationStatus) {
 @property (nonatomic, retain) NSNumber *altitude;
 @property (nonatomic, retain) NSNumber *latitude;
 @property (nonatomic, retain) NSNumber *longitude;
+@property (nonatomic, retain) NSNumber *battery;
 @property (nonatomic, retain) NSString *provider;
 @property (nonatomic, retain) NSNumber *locationProvider;
 @property (nonatomic, retain) NSNumber *radius; //only for stationary locations
@@ -40,7 +41,6 @@ typedef NS_ENUM(NSInteger, MAURLocationStatus) {
 
 + (instancetype) fromCLLocation:(CLLocation*)location;
 + (NSTimeInterval) locationAge:(CLLocation*)location;
-+ (NSMutableDictionary*) toDictionary:(CLLocation*)location;
 - (NSTimeInterval) locationAge;
 - (NSDictionary*) toDictionary;
 - (NSDictionary*) toDictionaryWithId;

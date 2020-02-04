@@ -8,6 +8,7 @@
 
 #import "MAURDistanceFilterLocationProvider.h"
 #import "MAURLogging.h"
+#import "MAURBatteryManager.h"
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -225,6 +226,7 @@ enum {
     MAURLocation *bestLocation = nil;
     for (CLLocation *location in locations) {
         MAURLocation *bgloc = [MAURLocation fromCLLocation:location];
+        [bgloc setBattery: [MAURBatteryManager getBatteryPercentage]];
         
         // test the age of the location measurement to determine if the measurement is cached
         // in most cases you will not want to rely on cached measurements
